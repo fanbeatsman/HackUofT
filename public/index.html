@@ -10,22 +10,7 @@
     <meta name="author" content="">
     <link href="css/styles.css" rel="stylesheet">
     <script src="js/main.js"></script>
-    <script type="text/javascript">
-    // The following code won't work for some reason
-      // var checkbox = document.createElement('input');
-      // checkbox.type = "checkbox";
-      // checkbox.name = "name";
-      // checkbox.value = "value";
-      // checkbox.id = "id";
 
-      // var label = document.createElement('label')
-      // label.htmlFor = "id";
-      // label.appendChild(document.createTextNode('text for label after checkbox'));
-
-      // var container = document.getElementById("checkboxes");
-      // container.appendChild(checkbox);
-      // container.appendChild(label);
-    </script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -60,10 +45,28 @@
           <div class="inner cover">
             <h1 class="cover-heading">Click on the datasets that you wish to visualize!</h1>
             <p class="lead"> (insert more description here ... )</p>
+
+            <div class="checkbox-inline">
+              <label>
+                <input id="checkbox1" type="checkbox" onclick="checkbox_validation()">Box Office
+              </label>
+            </div>
+            <div class="checkbox-inline">
+              <label>
+                <input id="checkbox2" type="checkbox" onclick="checkbox_validation()">Top DVD
+              </label>
+            </div>
+            <div class="checkbox-inline">
+              <label>
+                <input id="checkbox3" type="checkbox" onclick="checkbox_validation()">Other
+              </label>
+            </div>
+
+            <br><br>
             <p class="lead">
               <a href="#" class="btn btn-lg btn-default"> Useless button for now </a>
             </p>
-          </div>
+                
 
           <div class="mastfoot">
             <div class="inner">

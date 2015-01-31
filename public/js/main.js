@@ -1,10 +1,9 @@
 
-function checkCheckpoints(){
-	var x = document.createElement("INPUT");
-  x.setAttribute("type", "checkbox"); 	
-  var node = document.createElement("LI");                 // Create a <li> node
-	var textnode = document.createTextNode("Water");         // Create a text node
-	node.appendChild(textnode);                      
-	document.getElementById("checkboxes").appendChild(node);
+function checkbox_validation() {
+    var c1 = document.getElementById("checkbox1").checked;
+    var c2 = document.getElementById("checkbox2").checked;
+    var c3 = document.getElementById("checkbox3").checked;
+
+    console.log("checkbox1=" + c1 + " , checkbox2=" + c2 + " , checkbox3=" + c3);
 }
      
