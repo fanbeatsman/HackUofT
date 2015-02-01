@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="js/c3.min.js"></script>
+<link href="css/c3.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+
+
+<div style="height:500"><span style="width=200" id="chart"> </span><span style="width=200" id="chart2"></span><span style="width=200" id="chart3"></span><span style="width=200" id="chart4"></span><span style="width=200" id="chart5"></span><span style="width=200" id="chart6"></span><span style="width=200" id="chart7"></span></div>
+<center><form><input id="entry" type="text"></form><button class="go">Go</button></center>
+<center><button class="btn" id="submit">Performance</button><button class="btn" id="submit2">Comfort</button><button class="btn" id="submit3">Fuel Economy</button><button class="btn" id="submit4">Fun to Drive</button><button class="btn" id="submit5">Interior Design</button><button class="btn" id="submit6">Exterior Design</button><button class="btn" id="submit7">Build Quality</button></center>
+
+<div class="bigChart"></div>
+
+<img class="photo1"/><img class="photo2" style="float:right"/>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="js/mainD3.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var car1 = "";
+		var car2 = "";
+		$('.go').click(function(){
+			if (car1 == ""){
+				car1 = $("#entry").val();
+			car1 = car1.replace(/ /g , "/");
+			$.ajax({
+		'url': "https://api.edmunds.com/api/vehiclereviews/v2/" + car1 + '?sortby=thumbsUp%3AASC&pagenum=1&pagesize=10&fmt=json&api_key=tkmfxvqcaxur7v6j5xn8urax',
+		'type':'GET',
+		'success' : function(data){
+			if (data.status == "NOT_FOUND")
+			{
+				window.alert("car not found");
+				car1="";
+			}
+			else{
+			window.alert(car1 +" is registered");
+			}
+		},
+		'error': function(){
+			window.alert("Car does not exist");
+			car1="";
+		}
+
+
+	});
+			$("#entry").val("");
+		}
+		else if (car2 == ""){
+			car2 = $("#entry").val();
+			car2 = car2.replace(/ /g , "/");
+			$.ajax({
+				'url': "https://api.edmunds.com/api/vehiclereviews/v2/" + car2 + '?sortby=thumbsUp%3AASC&pagenum=1&pagesize=10&fmt=json&api_key=tkmfxvqcaxur7v6j5xn8urax',
+				'type':'GET',
+				'success' : function(data){
+					if (data.status == "NOT_FOUND")
+					{
+						window.alert("car not found");
+						car2="";
+					}
+					else{
+						window.alert(car2 +" is also registered");
+						$("#entry").val("");
+			startup({"Car1":car1,
+				"Car2":car2,
+			});
+					}
+				},
+				'error': function(){
+					window.alert("Car does not exist");
+					car2 = "";
+				}
+			});
+			$("#entry").val("");
+		}
+	});
+
+		});
+</script>
+</body>
+
+</html>
