@@ -36,5 +36,5 @@ svg.selectAll("circle")
 	.attr("r",5);
 
 var line = d3.svg.line()
-	.x(function(d){ return x(d[0]);}
-	.y(function(d){ return y(d[1]);}))
+	.x(function(d){ return x(d[0]);})
+	.y(function(d){ return y(d[1]);});

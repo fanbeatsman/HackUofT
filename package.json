@@ -4,6 +4,7 @@
   "description": "HackUofT",
   "main": "app.js",
   "dependencies": {
+    "ejs": "^2.2.3",
     "express": "^4.11.1"
   },
   "devDependencies": {},
