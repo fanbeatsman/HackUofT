@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
     <meta charset="utf-8">
@@ -38,6 +39,27 @@
     <!-- Custom styles for this template -->
     <link href="css/cover.css" rel="stylesheet">
   </head>
+=======
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="js/mainD3.js"></script>
+  <script src="js/main.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>  
+  <!-- Custom styles for this template -->
+  <link href="css/cover.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+>>>>>>> 117e68ea2c8542ffa6ce0215c194e791d92f7db1
 
   <body>
  <div class="site-wrapper">
@@ -57,16 +79,49 @@
             </div>
           </div>
 
+          <div id="main"></div>
+
+          <script id="intro-template" type="text/template">
           <div class="inner cover">
 
             <h1 class="cover-heading">Click on the datasets that you wish to visualize!</h1>
+<<<<<<< HEAD
           <div id="chart"> </div>
           <center><form><input type="text"></form></center><hr>
           <center><button class="btn" id="submit">Performance</button><button class="btn" id="submit2">Comfort</button><button class="btn" id="submit3">Fuel Economy</button><button class="btn" id="submit4">Fun to Drive</button><button class="btn" id="submit5">Interior Design</button><button class="btn" id="submit6">Exterior Design</button><button class="btn" id="submit7">Buid Quality</button></center>
             <p class="lead">
               <a href="d3.html" class="btn btn-lg btn-default"> Useless button for now </a>
             </p>
+=======
+            <p class="lead"> Search by query </p>
+            <div id="check">
+              <form>
+                <input type="text" name="name" id="search"></input>
+                <br>
+              </form>
+              <br>
+              <form>
+                <p class="lead"> ... or by radio buttons! </p>
+                <input type="checkbox" name="genre" value="Action">Action</input>
+                <br>
+                <input type="checkbox" name="genre" value="Comedy">Comedy</input>
+                <br>
+                <input type="checkbox" name="genre" value="Romance">Romance</input>
+                <br>
+                <input type="checkbox" name="genre" value="Obscure Nicholas Cage Movie">Obscure Nicholas Cage Movie</input>
+                <br></br>
+                <div class="btn btn-lg btn-default" id="button"> Submit </div>
+              </form> 
+              <br>
+            </div>
+>>>>>>> 117e68ea2c8542ffa6ce0215c194e791d92f7db1
           </div>
+          </script>
+
+          <script id="data-template" type="text/template">
+            <p> Heres your data! </p>
+            <div id="data"></div>
+          </script>
 
           <div class="mastfoot">
             <div class="inner">
