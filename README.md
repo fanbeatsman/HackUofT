@@ -1,4 +1,4 @@
-Node.js application that takes as input car names and pulls a lot of data from Edmund's API for car databases to make visualized comparisons based on real live consumber reviews.
+Node.js application that takes as input car names and pulls a lot of data from Edmund's API for car databases to generalize visualized comparisons in real time based on actual consumer reviews.
 ```
 npm install
 ```
