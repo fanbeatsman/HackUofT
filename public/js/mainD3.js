@@ -13,6 +13,7 @@ var carID ="";
 var car2 = dict.Car2;
 var car2ID = "";
 var currCar = car;
+var verbal = "";
 var parameters = '?sortby=thumbsUp%3AASC&pagenum=1&pagesize=10&fmt=json&api_key=';
 var picture_para = "?state=new&view=basic&fmt=json&api_key=tkmfxvqcaxur7v6j5xn8urax";
 var pi = Math.PI;
@@ -25,6 +26,19 @@ var datum = {performance: [1,1],
 			ED:[1,1],
 			BQ:[1,1]}; //fe = fuel economy, fun to drive, interior deign, exterior design, build quality
 var turns = 0;
+var sentiment = function(str){
+	$.ajax({
+		'url': "https://loudelement-free-natural-language-processing-service.p.mashape.com/nlp-text/?text=" + str.replace(/ /g , "+"),
+		'type': 'GET',
+		beforeSend: function(xhr){xhr.setRequestHeader('X-Mashape-Key', 'rebXCLKkIzmshRryYman8jnayKMvp1ia4zHjsn7gDFtJEVjqdl');},
+		'headers': {"X-Mashape-Key": "rebXCLKkIzmshRryYman8jnayKMvp1ia4zHjsn7gDFtJEVjqdl"},
+		'success':function(data){
+			console.log(data);
+			var verbal = data;
+		}
+	});
+}
+
 
 $.ajax({
 	'url': "https://api.edmunds.com/api/vehicle/v2/" + car.substring(0,car.length-5) + picture_para,
@@ -67,8 +81,8 @@ var dataset = [];
 var x = d3.scale.linear()
 		.domain([0,d3.max(dataset)])
 		.range([0,d3.max(dataset)*10]); 
-
-
+$(".entry, .bmw, .go, .topIns").remove();
+$(".instructions").html("Click one of the categories to sample from that category. The system takes turns, so each time you click one button, it will sample for one of the cars, then the other with alternance.");
 //d, and i are vars given by D3.js. Can be called by anonymous function or wtv. d = current value at __data__. i refers to the index of the data eg in the array it came from
 
 //CHARTS
@@ -156,10 +170,44 @@ $('#submit').click(function(){
 			if (turns == 0) {
 				datum.performance[0] = datum.performance[0] + data.reviews[0].ratings[0].value;
 				turns = 1;
+							var rdn = Math.floor(Math.random() * 10);
+			if (rdn%3 == 0){
+				verbal = data.reviews[rdn].title;
+				$(".verbal").html(verbal);
+				var sentimental = sentiment(verbal).sentiment-text;
+				console.log(sentimental);
+				if (sentimental == "neutral"){
+					$(".status1").append("neutral;");
+
+				}
+				else if(sentimental == "positive")
+					{
+					$(".status1").append("positive;");	
+					}
+					else {
+$(".status1").append("negative;");
+					};
+			}
 			}
 			else {
 				datum.performance[1] = datum.performance[1] + data.reviews[0].ratings[0].value;
 				turns = 0;
+							var rdn = Math.floor(Math.random() * 10);
+			if (rdn%3 == 0){
+				sentiment(verbal);
+				verbal = data.reviews[rdn].title;
+				$(".verbal2").html(verbal);
+				if (sentiment(verbal).sentiment-text == "neutral"){
+					$(".status2").append("neutral;");
+				}
+				else if(sentiment(verbal).sentiment-text == "positive")
+					{
+					$(".status2").append("positive;");	
+					}
+					else {
+$(".status2").append("negative;");
+					};
+			}
 			}
 			console.log(data.reviews[0].ratings[0]);
 			chart.load(
